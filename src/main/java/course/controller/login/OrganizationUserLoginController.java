@@ -31,12 +31,12 @@ class OrganizationUserLoginController extends LoginTemplate
 	 */
 	@RequestMapping(value="/OrganizationUserlogin")
 	@ResponseBody
-	public Map<String,String> login(String userName,String password,HttpSession session)
+	@Override
+	public int login(String userName,String password,HttpSession session)
 	{
-		return template(password, password, session);
+		return super.login(password, password, session);
 	}
-	
-	
+		
 	@Override
 	protected int loginUser(String userName, String password)
 	{

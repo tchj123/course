@@ -31,9 +31,10 @@ class TeacherUserLoginController extends LoginTemplate
 	 */
 	@RequestMapping(value="/TeacherUserlogin")
 	@ResponseBody
-	public Map<String,String> login(String userName,String password,HttpSession session)
+	@Override
+	public int login(String userName,String password,HttpSession session)
 	{
-		return template(password, password, session);
+		return super.login(password, password, session);
 	}
 	
 	

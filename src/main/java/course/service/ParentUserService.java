@@ -14,12 +14,12 @@ public class ParentUserService
 	 */
 	ParentUserDao pud=new ParentUserDao();
 
-	public boolean register(ParentUser userInfo)
+	public int register(ParentUser userInfo)
 	{
 		// 查找用户名是否存在
 		User user = pud.findByUserName(userInfo.getUserName());
 		if(user!=null)
-			return false;
+			return 0;
 		
 		return pud.register(userInfo);
 	}

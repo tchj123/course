@@ -23,26 +23,26 @@ class ParentUserRegisterController extends RegisterTemplate
 	/**
 	 * 处理注册请求
 	 */
-	@RequestMapping(value="/registerParentUser",method = RequestMethod.POST)
-	public ModelAndView registerPOST(@Validated ParentUser user,BindingResult result)
+	@RequestMapping(value="/parentUserRegister",method = RequestMethod.POST)
+	public int register(@Validated ParentUser user,BindingResult result)
 	{
-		return template(user, result);
+		return super.register(user, result);
 	}
 		
 	/**
 	 *  返回注册表单页面
 	 */
-	@RequestMapping(path = "/registerParentUser", method = RequestMethod.GET)
-	public ModelAndView registerGet(User user)
+	@RequestMapping(path = "/parentUserRegister", method = RequestMethod.GET)
+	public ModelAndView registerForm(User user)
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("registerParentUser");
+		mav.setViewName("parentUserRegister");
 		return mav;
 	}
 	
 	
 	@Override
-	protected boolean registerUser(Object user)
+	protected int registerUser(Object user)
 	{
 		return pus.register((ParentUser)user);
 	}

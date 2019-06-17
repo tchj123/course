@@ -23,26 +23,25 @@ public class OrganizationUserRegisterController extends RegisterTemplate
 	/**
 	 * 处理注册请求
 	 */
-	@RequestMapping(value="/registerOrganizationUser",method = RequestMethod.POST)
-	public ModelAndView registerPOST(@Validated OrganizationUser user,BindingResult result)
+	@RequestMapping(value="/organizationUseRregister",method = RequestMethod.POST)
+	public int register(@Validated OrganizationUser user,BindingResult result)
 	{
-		return template(user, result);
+		return super.register(user, result);
 	}
 	
 	/**
 	 *  返回注册表单页面
 	 */
-	@RequestMapping(path = "/registerOrganizationUser", method = RequestMethod.GET)
-	public ModelAndView registerGet(User user)
+	@RequestMapping(path = "/organizationUserForm", method = RequestMethod.GET)
+	public ModelAndView registerForm(User user)
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("registerOrganizationUser");
+		mav.setViewName("organizationUserRegister");
 		return mav;
 	}
 	
-	
 	@Override
-	protected boolean registerUser(Object user)
+	protected int registerUser(Object user)
 	{
 		return ous.register((OrganizationUser)user);
 	}

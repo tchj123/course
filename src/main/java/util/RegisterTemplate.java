@@ -6,24 +6,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.servlet.ModelAndView;
 
-
+/**
+ * 用户注册通用模板类。
+ * @author tchj
+ *
+ */
 public abstract class RegisterTemplate
 {
 	
-	public ModelAndView template(Object user,BindingResult result)
+	public int register(Object user,BindingResult result)
 	{
 		//校验数据绑定
-		BindingCheck(result);
-		
-		ModelAndView mav = new ModelAndView();		
-		
-		//调用注册逻辑
-		if (registerUser(user))
-			succeed(mav);
-		else
-			fail(mav);
-		
-		return mav;
+		BindingCheck(result);	
+		return registerUser(user);
+
 	}
 	
 	/**
@@ -44,25 +40,8 @@ public abstract class RegisterTemplate
 	/**
 	 * 调用注册用户的功能，子类必须给出相应实现。 
 	 */
-	abstract protected boolean registerUser(Object user);
+	abstract protected int registerUser(Object user);
 
-	/**
-	 * 注册成功时执行的逻辑
-	 * @param mav 暴露给子类的ModelAndView
-	 */
-	protected void succeed(ModelAndView mav)
-	{
-		setModelAndView(mav,"succeed","注册成功","/login");
-	}
-	
-	/**
-	 * 注册失败时执行的逻辑
-	 * @param mav 暴露给子类的ModelAndView
-	 */
-	protected void fail(ModelAndView mav)
-	{
-		setModelAndView(mav,"fail","注册失败","/register");
-	}
 	
 
 	/**

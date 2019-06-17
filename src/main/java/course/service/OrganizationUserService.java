@@ -14,19 +14,20 @@ public class OrganizationUserService
 	 * TODO 目前手动注入了依赖，日后应该改成Autowired
 	 */
 	OrganizationUserDao pud=new OrganizationUserDao();
-
-	public boolean register(OrganizationUser userInfo)
+	AuthingUserDao aud=new AuthingUserDao();
+	
+	public int register(OrganizationUser userInfo)
 	{
 		// 查找用户名是否存在
 		User user = pud.findByUserName(userInfo.getUserName());
 		if(user!=null)
-			return false;
+			return 0;
 		
 		return pud.register(userInfo);
 	}
 
 	/**
-	 * @return 返回0代表“用户名不存在”，1代表“密码不正确”，2代表“登陆成功”
+	 * @return 返回0代表“用户名不存在”，1代表“密码不正确”，2代表“登陆成功”,3表示正在审核，4表示审核失败
 	 */
 	public int login(String userName, String password)
 	{
@@ -38,6 +39,15 @@ public class OrganizationUserService
 		//检验密码是否正确
 		if (!password.equals(user.getPassword()))
 			return 1;
+		
+		//查询用户是否通过审核
+		String result=aud.findResultByUserName(); 
+		if(result==null||result.isEmpty())
+			return 2;
+		if(result=="authing")
+			return 3;
+		if(result=="reject")
+			return 4;
 		return 2;
 		
 	}

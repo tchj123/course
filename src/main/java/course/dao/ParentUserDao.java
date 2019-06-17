@@ -36,10 +36,10 @@ public class ParentUserDao
 
 	}
 
-	public boolean register(ParentUser userInfo)
+	public int register(ParentUser userInfo)
 	{
 		userList.add(userInfo);
-		return true;
+		return 1;
 	}
 
 }

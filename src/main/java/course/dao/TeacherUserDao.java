@@ -35,10 +35,10 @@ public class TeacherUserDao
 
 	}
 
-	public boolean register(TeacherUser userInfo)
+	public int register(TeacherUser userInfo)
 	{
 		userList.add(userInfo);
-		return true;
+		return 1;
 	}
 
 }

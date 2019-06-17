@@ -17,6 +17,7 @@ import org.hibernate.validator.constraints.Range;
  */
 public class Subject
 {
+	private String courseId; //课程编码
 	@NotNull
 	private String type;    //课程类型
 	@NotNull
@@ -56,5 +57,13 @@ public class Subject
 	}
 	public void setCourse(List<Course> course) {
 		this.course = course;
+	}
+	public String getCourseId()
+	{
+		return courseId;
+	}
+	public void setCourseId(String courseId)
+	{
+		this.courseId = courseId;
 	}
 }

@@ -35,10 +35,10 @@ public class OrganizationUserDao
 
 	}
 
-	public boolean register(OrganizationUser userInfo)
+	public int register(OrganizationUser userInfo)
 	{
 		userList.add(userInfo);
-		return true;
+		return 1;
 	}
 
 }
