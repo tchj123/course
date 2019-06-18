@@ -27,7 +27,7 @@ public class OrganizationUserService
 	}
 
 	/**
-	 * @return 返回0代表“用户名不存在”，1代表“密码不正确”，2代表“登陆成功”,3表示正在审核，4表示审核失败
+	 * @return 登陆成功
 	 */
 	public int login(String userName, String password)
 	{

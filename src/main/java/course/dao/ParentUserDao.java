@@ -14,7 +14,6 @@ public class ParentUserDao
 	public ParentUserDao()
 	{
 		userList=new LinkedList<ParentUser>();
-		userList.add(new ParentUser("tchj", "123456"));
 		userList.add(new ParentUser("wzl", "123456"));
 		userList.add(new ParentUser("hhh", "123456"));
 	}

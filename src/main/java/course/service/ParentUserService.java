@@ -25,7 +25,7 @@ public class ParentUserService
 	}
 
 	/**
-	 * @return 返回0代表“用户名不存在”，1代表“密码不正确”，2代表“登陆成功”
+	 * @return 返回0代表“用户名不存在”，1代表“登陆成功”，2代表“密码不正确”
 	 */
 	public int login(String userName, String password)
 	{
@@ -36,8 +36,8 @@ public class ParentUserService
 		
 		//检验密码是否正确
 		if (!password.equals(user.getPassword()))
-			return 1;
-		return 2;
+			return 2;
+		return 1;
 		
 	}
 

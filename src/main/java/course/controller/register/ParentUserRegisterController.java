@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import course.bean.ParentUser;
 import course.bean.User;
 import course.service.ParentUserService;
-import util.RegisterTemplate;
 
 @Controller
 class ParentUserRegisterController extends RegisterTemplate
@@ -33,7 +32,7 @@ class ParentUserRegisterController extends RegisterTemplate
 	 *  返回注册表单页面
 	 */
 	@RequestMapping(path = "/parentUserRegister", method = RequestMethod.GET)
-	public ModelAndView registerForm(User user)
+	public ModelAndView registerForm()
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("parentUserRegister");

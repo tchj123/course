@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import course.bean.ParentUser;
+import course.bean.TeacherUser;
 
 @Controller
 public class TestController
@@ -46,9 +47,8 @@ public class TestController
 	}
 
 	@RequestMapping("/test")
-	@ResponseBody()
-	public boolean test()
+	public String test()
 	{
-		return true;
+		return "test";
 	}
 }

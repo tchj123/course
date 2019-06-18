@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import course.bean.ParentUser;
 import course.service.ParentUserService;
-import util.LoginTemplate;
 
 @Controller
 class ParentUserLoginController extends LoginTemplate
@@ -28,12 +27,12 @@ class ParentUserLoginController extends LoginTemplate
 	/**
 	 * 处理登陆请求
 	 */
-	@RequestMapping(value="/ParentUserlogin")
+	@RequestMapping(value="/parentUserLogin")
 	@ResponseBody
 	@Override
 	public int login(String userName,String password,HttpSession session)
 	{
-		return super.login(password, password, session);
+		return super.login(userName, password, session);
 	}
 	
 	

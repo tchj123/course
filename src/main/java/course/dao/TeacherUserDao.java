@@ -4,6 +4,7 @@ package course.dao;
 import java.util.LinkedList;
 import java.util.List;
 
+import course.bean.ParentUser;
 import course.bean.TeacherUser;
 import course.bean.User;
 
@@ -15,7 +16,7 @@ public class TeacherUserDao
 	public TeacherUserDao()
 	{
 		userList=new LinkedList<TeacherUser>();
-		
+		userList.add(new TeacherUser("tchj", "123456"));
 	}
 
 	public TeacherUser findByUserName(String userName)
@@ -35,7 +36,7 @@ public class TeacherUserDao
 
 	}
 
-	public int register(TeacherUser userInfo)
+	public int addTeacherUser(TeacherUser userInfo)
 	{
 		userList.add(userInfo);
 		return 1;

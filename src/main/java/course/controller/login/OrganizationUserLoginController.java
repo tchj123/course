@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import course.bean.OrganizationUser;
 import course.service.OrganizationUserService;
-import util.LoginTemplate;
 
 @Controller
 class OrganizationUserLoginController extends LoginTemplate
@@ -29,12 +28,12 @@ class OrganizationUserLoginController extends LoginTemplate
 	/**
 	 * 处理登陆请求
 	 */
-	@RequestMapping(value="/OrganizationUserlogin")
+	@RequestMapping(value="/organizationUserLogin")
 	@ResponseBody
 	@Override
 	public int login(String userName,String password,HttpSession session)
 	{
-		return super.login(password, password, session);
+		return super.login(userName, password, session);
 	}
 		
 	@Override

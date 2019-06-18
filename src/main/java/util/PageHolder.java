@@ -1,11 +1,15 @@
 package util;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.util.List;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import course.bean.TeacherUser;
+
 /**
- * 分页显示容器
+ * 分页容器，对List<T>的包装，提供了以“分页”视角使用List的方法。默认每页5个数据
  * @author tchj
  *
  * @param <T>
@@ -56,7 +60,9 @@ public class PageHolder<T>
 	public List<T> currentPage()
 	{
 		int fromIndex = (currentPage - 1) * onePageNumber;
-		return list.subList(fromIndex, fromIndex + onePageNumber - 1);
+		int toIndex=fromIndex + onePageNumber;
+		
+		return list.subList(fromIndex,toIndex );
 	}
 
 	/**
@@ -66,9 +72,13 @@ public class PageHolder<T>
 	{
 		if (currentPage <= 1)
 			return null;
+		
 		currentPage--;
+		
 		int fromIndex = currentPage * onePageNumber;
-		return list.subList(fromIndex, fromIndex + onePageNumber - 1);
+		int toIndex=fromIndex + onePageNumber;
+		
+		return list.subList(fromIndex, toIndex);
 	}
 
 	/**
@@ -78,10 +88,14 @@ public class PageHolder<T>
 	{
 		if (currentPage >= totalPage || currentPage < 0)
 			return null;
-		int fromIndex = currentPage * onePageNumber;
-		int toIndex = fromIndex + onePageNumber - 1;
+		
 		currentPage++;
-		return list.subList(fromIndex, toIndex >= listSize ? listSize - 1 : toIndex);
+		
+		int fromIndex = (currentPage-1) * onePageNumber;
+		int temp=fromIndex + onePageNumber;
+		int toIndex =  temp>listSize?listSize:temp;
+		
+		return list.subList(fromIndex, toIndex);
 
 	}
 
@@ -92,9 +106,13 @@ public class PageHolder<T>
 	{
 		if (listSize == 0)
 			return null;
+		
 		currentPage = 1;
-		int toIndex = onePageNumber - 1;
-		return list.subList(0, toIndex >= listSize ? listSize - 1 : toIndex);
+		
+		int fromIndex=0;
+		int toIndex = onePageNumber>listSize?listSize:onePageNumber ;
+		
+		return list.subList(fromIndex, toIndex >= listSize ? listSize : toIndex);
 	}
 
 	/**
@@ -104,8 +122,13 @@ public class PageHolder<T>
 	{
 		if (listSize == 0)
 			return null;
+		
 		currentPage = totalPage;
-		return list.subList(totalPage, listSize - 1);
+		
+		int fromIndex=(currentPage-1)*onePageNumber;
+		int toIndex=listSize;
+		
+		return list.subList(fromIndex, toIndex);
 	}
 
 	/**
@@ -118,17 +141,20 @@ public class PageHolder<T>
 	{
 		if (toPage >= totalPage || toPage <= 0)
 			return null;
+		
 		currentPage = toPage;
-		int fromIndex = toPage * onePageNumber;
-		int toIndex = toPage * onePageNumber - 1;
-		return list.subList(fromIndex, toIndex >= listSize ? listSize - 1 : toIndex);
+		
+		int fromIndex = (currentPage-1) * onePageNumber;
+		int temp=fromIndex+onePageNumber;
+		int toIndex = temp >= listSize ? listSize  : temp;
+		
+		return list.subList(fromIndex,toIndex );
 	}
 
 	public int getOnePageNumber()
 	{
 		return onePageNumber;
 	}
-
 
 	public int getCurrentPage()
 	{
@@ -139,7 +165,15 @@ public class PageHolder<T>
 	{
 		return totalPage;
 	}
-
+	
+	/**
+	 * @param teacherUserList 
+	 * 
+	 */
+	public void resetList(List<TeacherUser> teacherUserList)
+	{
+		
+	}
 
 
 }

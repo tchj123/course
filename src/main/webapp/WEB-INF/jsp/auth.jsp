@@ -12,9 +12,13 @@
 <body>
 <form>
 教师申请表:<br><br><br><br>
-1.姓名：tchj 身份证号码：123456  <a href="<%=path%>/">详细信息</a> <input type="button" value="同意申请 " onclick="">
+1.姓名：tchj 身份证号码：123456  <a href="${pageContext.request.contextPath}/">详细信息</a> 
+<input type="button" value="同意申请 " onclick="">
+<input type="button" value="拒绝申请 " onclick="">
 <br>
-2.姓名：wzl 身份证号码：123456  <a href="<%=path%>/">详细信息</a> <input type="button" value="同意申请 " onclick="">
+2.姓名：wzl 身份证号码：123456  <a href="${pageContext.request.contextPath}/">详细信息</a> 
+<input type="button" value="同意申请 " onclick="">
+<input type="button" value="拒绝申请 " onclick="">
 <br>
 共${totalPage} 页  &nbsp
 跳转至第<input type="text">页  

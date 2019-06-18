@@ -2,7 +2,7 @@ package course.service;
 
 import java.util.List;
 
-import course.bean.AuthResult;
+import course.bean.TeacherAuthResult;
 
 public class AuthingUserDao
 {

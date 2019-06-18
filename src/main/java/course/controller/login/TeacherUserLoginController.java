@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import course.bean.TeacherUser;
 import course.service.TeacherUserService;
-import util.LoginTemplate;
 
 @Controller
 class TeacherUserLoginController extends LoginTemplate
@@ -29,15 +28,14 @@ class TeacherUserLoginController extends LoginTemplate
 	/**
 	 * 处理登陆请求
 	 */
-	@RequestMapping(value="/TeacherUserlogin")
+	@RequestMapping(value="/teacherUserLogin")
 	@ResponseBody
 	@Override
 	public int login(String userName,String password,HttpSession session)
 	{
-		return super.login(password, password, session);
+		return super.login(userName, password, session);
 	}
-	
-	
+		
 	@Override
 	protected int loginUser(String userName, String password)
 	{

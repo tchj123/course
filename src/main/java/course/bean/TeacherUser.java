@@ -7,6 +7,13 @@ import org.hibernate.validator.constraints.Range;
 
 public class TeacherUser extends User
 {
+	public TeacherUser() {}
+	public TeacherUser(String userName,String password)
+	{
+		this.userName=userName;
+		this.password=password;
+	}
+	
 	@NotNull
 	private String name;
 	@Pattern(regexp="[男女]$",message="性别只能为男、女")

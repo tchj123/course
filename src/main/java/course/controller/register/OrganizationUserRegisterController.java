@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import course.bean.OrganizationUser;
 import course.bean.User;
 import course.service.OrganizationUserService;
-import util.RegisterTemplate;
 
 @Controller
 public class OrganizationUserRegisterController extends RegisterTemplate
@@ -33,7 +32,7 @@ public class OrganizationUserRegisterController extends RegisterTemplate
 	 *  返回注册表单页面
 	 */
 	@RequestMapping(path = "/organizationUserForm", method = RequestMethod.GET)
-	public ModelAndView registerForm(User user)
+	public ModelAndView registerForm()
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("organizationUserRegister");

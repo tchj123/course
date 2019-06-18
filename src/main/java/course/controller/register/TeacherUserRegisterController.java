@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import course.bean.TeacherUser;
 import course.bean.User;
 import course.service.TeacherUserService;
-import util.RegisterTemplate;
 
 @Controller
 public class TeacherUserRegisterController extends RegisterTemplate
@@ -24,21 +23,21 @@ public class TeacherUserRegisterController extends RegisterTemplate
 	/**
 	 * 处理注册请求
 	 */
-	@RequestMapping(value="/TeacherUserRegister",method = RequestMethod.POST)
+	@RequestMapping(value="/teacherUserRegister",method = RequestMethod.POST)
 	@ResponseBody
 	public int register(@Validated TeacherUser user,BindingResult result)
 	{
-		return super.register(user, result);
+		return super.register(user, null);
 	}
 	
 	/**
 	 *  返回注册表单页面
-	 */
-	@RequestMapping(path = "/TeacherUserRegister", method = RequestMethod.GET)
-	public ModelAndView registerForm(User user)
+	 */						
+	@RequestMapping(path = "/teacherUserRegister", method = RequestMethod.GET)
+	public ModelAndView registerForm()
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("TeacherUserRegister");
+		mav.setViewName("teacherUserRegister");
 		return mav;
 	}
 	
