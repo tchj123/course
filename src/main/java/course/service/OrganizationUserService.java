@@ -7,14 +7,18 @@ import org.springframework.stereotype.Service;
 import course.bean.OrganizationUser;
 import course.bean.User;
 import course.dao.OrganizationUserDao;
+import course.dao.MockDao.AuthingUserDao;
 @Service
 public class OrganizationUserService
 {
 	/**
 	 * TODO 目前手动注入了依赖，日后应该改成Autowired
 	 */
-	OrganizationUserDao pud=new OrganizationUserDao();
-	AuthingUserDao aud=new AuthingUserDao();
+	@Autowired
+	OrganizationUserDao pud;
+	
+	//@Autowired
+	AuthingUserDao aud;
 	
 	public int register(OrganizationUser userInfo)
 	{

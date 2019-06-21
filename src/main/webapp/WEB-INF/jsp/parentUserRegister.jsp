@@ -10,7 +10,7 @@
 <title>首页</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/teacherUserRegister" method="POST">
+<form action="${pageContext.request.contextPath}/parentUserRegister" method="POST">
 
 
 登陆名称：<input type="text" name="userName" required><br>

@@ -1,8 +1,5 @@
 package course.controller.login;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 /**
  * 用户登陆通用模板类。

@@ -1,64 +1,36 @@
 package course.dao;
 
-import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import course.bean.TeacherAuthResult;
-import course.bean.TeacherUser;
 
-public class TeacherAuthResultDao
+@Mapper
+public interface TeacherAuthResultDao
 {
-	List<TeacherAuthResult> list = new LinkedList<>();
-
-	public List<TeacherAuthResult> getAllAuthResult()
-	{
-		return list;
-	}
+	@Select("select * from teacherAuthResult")
+	public List<TeacherAuthResult> getAllAuthResult();
 
 	// 返回所有正在审核中的用户的用户名
-	public List<String> getAllAuthingUserName()
-	{
-		List<String> ret = new LinkedList<>();
-		for (TeacherAuthResult it : list)
-			if (it.getResult().equals("Authing"))
-				ret.add(it.getUserName());
-		return ret;
-	}
+	@Select("select userName from teacherAuthResult")
+	public List<String> getAllAuthingUserName();
+	
+	@Select("select result from teacherAuthResult where userName=#{userName}")
+	public String findResultByUserName(String userName);
 
-	public String findResultByUserName(String userName)
-	{
-		for (TeacherAuthResult it : list)
-			if (it.getUserName().equals(userName))
-				return it.getResult();
-		return null;
-	}
+	@Insert("insert into teacherAuthResult(userName,result)"
+			+ "values(#{userName},#{result})")
+	public boolean insert(TeacherAuthResult tas);
 
-	public boolean addTeacherAuthResult(TeacherAuthResult tas)
-	{
-		list.add(tas);
-		return true;
-	}
+	@Delete("delete from teacherAuthResult where userName=#{userName}")
+	public boolean deleteAuthResultByUserName(String userName);
 
-	public boolean deleteAuthResultByUserName(String userName)
-	{
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getUserName().equals(userName))
-			{
-				list.remove(i);
-				return true;
-			}
-		return false;
-	}
-
-	public boolean updateAuthResultByUserName(String userName)
-	{
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getUserName().equals(userName))
-			{
-				list.get(i).setResult("reject");
-				return true;
-			}
-		return false;
-	}
+	@Update("update teacherAuthResult set result where userName=#{userName}")
+	public boolean updateAuthResultByUserName(String userName);
 
 }

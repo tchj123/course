@@ -2,14 +2,18 @@ package course.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import course.bean.Video;
 import course.dao.VideoDao;
 import util.UserFactory;
 
-
+@Service
 public class IndexService
 {
-	VideoDao vd=UserFactory.VideoDaoFactory();
+	@Autowired
+	VideoDao vd;
 	public List<Video> getVideoList(String order)
 	{
 		if(order.equals("asc"))

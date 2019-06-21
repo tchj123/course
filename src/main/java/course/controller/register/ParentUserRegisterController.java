@@ -6,10 +6,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import course.bean.ParentUser;
-import course.bean.User;
 import course.service.ParentUserService;
 
 @Controller
@@ -23,9 +23,10 @@ class ParentUserRegisterController extends RegisterTemplate
 	 * 处理注册请求
 	 */
 	@RequestMapping(value="/parentUserRegister",method = RequestMethod.POST)
+	@ResponseBody
 	public int register(@Validated ParentUser user,BindingResult result)
 	{
-		return super.register(user, result);
+		return super.register(user, null);
 	}
 		
 	/**

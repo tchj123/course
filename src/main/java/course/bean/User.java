@@ -7,12 +7,13 @@ import javax.validation.constraints.NotNull;
 
 public class User
 {
+	String userId;
 	@NotNull(message="用户名不能为空")
 	protected String userName;
 	@NotNull(message="密码不能为空")
 	protected String password;
 	@Email(message="邮箱格式不正确")
-	protected String e_mail;
+	protected String email;
 	@NotNull
 	protected String phone;
 	@NotNull
@@ -38,14 +39,14 @@ public class User
 		this.password = password;
 	}
 
-	public String getE_mail()
+	public String getEmail()
 	{
-		return e_mail;
+		return email;
 	}
 
-	public void setE_mail(String e_mail)
+	public void setEmail(String email)
 	{
-		this.e_mail = e_mail;
+		this.email = email;
 	}
 
 	public String getPhone()

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import course.bean.TeacherUser;
-import course.bean.User;
 import course.service.TeacherUserService;
 
 @Controller

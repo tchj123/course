@@ -3,16 +3,15 @@ package course.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import course.bean.Course;
 import course.bean.ParentUser;
 import course.bean.User;
 import course.dao.ParentUserDao;
 @Service
 public class ParentUserService
 {
-	/**
-	 * TODO 目前手动注入了依赖，日后应该改成Autowired
-	 */
-	ParentUserDao pud=new ParentUserDao();
+	@Autowired
+	ParentUserDao pud;
 
 	public int register(ParentUser userInfo)
 	{
@@ -20,8 +19,8 @@ public class ParentUserService
 		User user = pud.findByUserName(userInfo.getUserName());
 		if(user!=null)
 			return 0;
-		
-		return pud.register(userInfo);
+		boolean ret=((pud instanceof course.dao.ParentUserDao)==true);
+		return pud.insert(userInfo);
 	}
 
 	/**
@@ -41,13 +40,13 @@ public class ParentUserService
 		
 	}
 
-	public boolean changeSelfInfo(ParentUser userInfo)
+	public int changeSelfInfo(ParentUser userInfo)
 	{
 		ParentUser user=pud.findByUserName(userInfo.getUserName());
 		
 		//找不到用户
 		if(user==null)
-			return false;
+			return 0;
 		
 		/**
 		 * TODO 设置user的各项，注意不可更改项。
@@ -55,7 +54,7 @@ public class ParentUserService
 		user.setAge(userInfo.getAge());
 		user.setChildName(userInfo.getChildName());
 		
-		return pud.updateUser(user);
+		return pud.updateUser(user)>1?1:0;
 		
 	}
 

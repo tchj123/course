@@ -6,16 +6,14 @@ public class Video
 {
 	private String videoId;
 	private String url;
-	private Date date;
 	public Video()
 	{
 	}
 
-	public Video(String videoId, String url,Date date)
+	public Video(String videoId, String url)
 	{
 		this.videoId = videoId;
 		this.url = url;
-		this.date=date;
 	}
 
 	public String getVideoId()
@@ -38,13 +36,5 @@ public class Video
 		this.url = url;
 	}
 
-	public Date getDate()
-	{
-		return date;
-	}
 
-	public void setDate(Date date)
-	{
-		this.date = date;
-	}
 }

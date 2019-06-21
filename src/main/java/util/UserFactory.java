@@ -1,8 +1,6 @@
 package util;
 
-import course.dao.TeacherAuthResultDao;
-import course.dao.TeacherUserDao;
-import course.dao.VideoDao;
+import course.dao.MockDao.*;
 
 public class UserFactory
 {

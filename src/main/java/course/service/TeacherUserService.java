@@ -2,6 +2,7 @@
 
 package course.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import course.bean.TeacherAuthResult;
@@ -13,11 +14,11 @@ import util.UserFactory;
 @Service
 public class TeacherUserService
 {
-	/**
-	 * TODO 目前手动注入了依赖，日后应该改成Autowired
-	 */
-	TeacherUserDao tud=UserFactory.teacherUserDaoFactory();
-	TeacherAuthResultDao tard=UserFactory.teacherAuthResultDaoFactory();
+	@Autowired
+	TeacherUserDao tud;
+	
+	@Autowired
+	TeacherAuthResultDao tard;
 	
 	/**
 	 * TODO 去掉注释 @Transactional
@@ -29,10 +30,10 @@ public class TeacherUserService
 		if(user!=null)
 			return 0;
 		//注册用户，并且放入待审核列表
-		if(tud.addTeacherUser(userInfo)==1)
+		if(tud.insert(userInfo)==1)
 		{
 			TeacherAuthResult tas=new TeacherAuthResult(userInfo.getUserName(),"authing");
-			tard.addTeacherAuthResult(tas);
+			tard.insert(tas);
 		}
 		return 1;
 	}
@@ -64,13 +65,13 @@ public class TeacherUserService
 		
 	}
 
-	public boolean changeSelfInfo(TeacherUser userInfo)
+	public int changeSelfInfo(TeacherUser userInfo)
 	{
 		TeacherUser user=tud.findByUserName(userInfo.getUserName());
 		
 		//找不到用户
 		if(user==null)
-			return false;
+			return 0;
 		
 		/**
 		 * TODO 设置user的各项，注意不可更改项。
@@ -78,7 +79,7 @@ public class TeacherUserService
 	
 		user.setInfo(userInfo.getInfo());
 		
-		return tud.updateUser(user);
+		return tud.updateUser(user)>1?1:0;
 		
 	}
 

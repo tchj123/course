@@ -1,4 +1,4 @@
-package course.service;
+package course.dao.MockDao;
 
 import java.util.List;
 

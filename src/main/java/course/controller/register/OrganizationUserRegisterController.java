@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import course.bean.OrganizationUser;
-import course.bean.User;
 import course.service.OrganizationUserService;
 
 @Controller

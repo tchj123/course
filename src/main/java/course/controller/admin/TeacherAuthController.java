@@ -1,21 +1,15 @@
 package course.controller.admin;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.function.IntToDoubleFunction;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import course.bean.TeacherUser;
 import course.service.AdminService;
-import course.service.AuthingUserDao;
 import util.PageHolder;
 
 /**

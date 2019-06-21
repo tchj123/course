@@ -3,6 +3,7 @@ package course.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import course.bean.TeacherAuthResult;
@@ -14,8 +15,11 @@ import util.UserFactory;
 @Service
 public class AdminService
 {
-	TeacherAuthResultDao ad=UserFactory.teacherAuthResultDaoFactory();
-	TeacherUserDao tud=UserFactory.teacherUserDaoFactory();
+	@Autowired
+	TeacherAuthResultDao ad;
+	
+	@Autowired
+	TeacherUserDao tud;
 	
 	public int login(String userName, String password)
 	{

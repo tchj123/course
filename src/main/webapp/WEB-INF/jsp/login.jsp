@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath}/teacherUserLogin" method="POST">
+<form action="${pageContext.request.contextPath}/parentUserLogin" method="POST">
 
 登陆名称：<input type="text" name="userName" ><br>
 密码：<input type="password" name="password"><br>
@@ -19,6 +19,6 @@
 
 
 </form>
-<a href="${pageContext.request.contextPath}/teacherUserRegister">注册</a>
+<a href="${pageContext.request.contextPath}/parentUserRegister">注册</a>
 </body>
 </html>

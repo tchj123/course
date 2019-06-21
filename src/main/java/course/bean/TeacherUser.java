@@ -24,8 +24,6 @@ public class TeacherUser extends User
 	private String realm;
 	@Range(min=0,max=60,message="超出年数范围")
 	private String time;//从教年限
-	@Range(min=0,max=100,message="超出年龄范围")
-	private String agg;//教育合适年龄
 	@Pattern(regexp="^(\\d{6})(\\d{4})(\\d{2})(\\d{2})(\\d{3})([0-9]|X)$",message="身份证号码为标准18位")
 	private String id;//身份证号码
 	@NotNull
@@ -70,14 +68,7 @@ public class TeacherUser extends User
 	{
 		this.time = time;
 	}
-	public String getAgg()
-	{
-		return agg;
-	}
-	public void setAgg(String agg)
-	{
-		this.agg = agg;
-	}
+
 	public String getId()
 	{
 		return id;

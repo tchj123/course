@@ -1,44 +1,23 @@
 package course.dao;
 
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import course.bean.Video;
 
-public class VideoDao
+@Mapper
+public interface VideoDao
 {
-	List<Video> list;
+	@Select("select * from video")
+	public List<Video> getALLVideoByAsc();
+	
+	@Select("select * from video order by videoId desc")
+	public List<Video> getALLVideoByDesc();
 
-	public VideoDao()
-	{
-		list = new LinkedList<>();
-	}
-
-	public List<Video> getALLVideoByAsc()
-	{
-		return list;
-	}
-
-	public List<Video> getALLVideoByDesc()
-	{
-		List<Video> ret = new LinkedList<>();
-		ret.addAll(list);
-		Collections.reverse(list);
-		return list;
-	}
-
-	public int deleteByVideoId(String videoId)
-	{
-		for (int i = 0; i < list.size(); i++)
-		{
-			if (list.get(i).getVideoId().equals(videoId))
-			{
-				list.remove(i);
-				return 1;
-			}
-		}
-		return 0;
-	}
+	@Delete("delete from video where videoId=#{videoId}")
+	public int deleteByVideoId(String videoId);
 
 }

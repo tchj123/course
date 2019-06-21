@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 用户注册通用模板类。

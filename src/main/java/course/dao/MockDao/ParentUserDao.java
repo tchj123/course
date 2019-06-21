@@ -1,4 +1,4 @@
-package course.dao;
+package course.dao.MockDao;
 
 import java.util.LinkedList;
 import java.util.List;

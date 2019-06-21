@@ -1,4 +1,4 @@
-package test;
+package test.MockTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,7 +21,7 @@ import org.springframework.validation.ObjectError;
 import course.bean.ParentUser;
 import course.bean.TeacherUser;
 import course.bean.User;
-import course.dao.TeacherUserDao;
+import course.dao.MockDao.*;
 import course.service.ParentUserService;
 import course.service.TeacherUserService;
 
